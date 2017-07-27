@@ -1,9 +1,14 @@
 var frameModule = require("ui/frame");
+var ObeservableModule = require("data/observable");
 var page;
 var email;
+var user = new ObeservableModule.fromObject({
+    email : "user@domain.com",
+    password: "password"
+});
 exports.loaded = function(args){
     page = args.object;
-    
+    page.bindingContext = user;
 }
 exports.signIn = function(){
     email = page.getViewById("email");
